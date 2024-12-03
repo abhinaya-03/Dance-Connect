@@ -1,6 +1,6 @@
 # 💃 DanceConnect  
 
-Welcome to **DanceConnect**, your all-in-one platform for dance tutorials, events, and community engagement! This project is designed to connect dancers of all levels and provide a space to learn, share, and celebrate the art of dance. I designed this website out of my deep love for dancing, particularly Indian fusion dance, as a way to celebrate both my culture and my passion for movement and expression.
+Welcome to **DanceConnect**, your all-in-one platform for dance tutorials, events, and community engagement! This project was created as part of my CodePath Web Development 101 class, where I learned so much throughout the process. I designed the website to connect dancers of all levels, providing a space to learn, share, and celebrate the art of dance. Inspired by my deep love for dancing—particularly Indian fusion dance—it also serves as a celebration of my culture and my passion for movement and expression.
 
 ---
 
