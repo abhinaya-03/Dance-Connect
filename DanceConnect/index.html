@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DanceConnect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: #2c2c2c;
+            color: #f4f4f4;
+        }
+
+        header {
+            background-color: #a597b5;
+            color: #fff; 
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1, h3 {
+            margin: 0;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: #e5d3b3;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav a {
+            color: #6c567b;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .about, .images-section, .buttons-section, .resources-section, .petition-section {
+            margin-bottom: 40px;
+            background-color: #faf4ff;
+            padding: 20px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .about, .dark-mode .images-section, .dark-mode .buttons-section, .dark-mode .resources-section, .dark-mode .petition-section {
+            background-color: #444;
+        }
+
+        .images-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .button {
+            background-color: #a597b5;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .button:hover {
+            background-color: #6c567b;
+        }
+
+        footer {
+            background-color: #6c567b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #e5d3b3;
+            text-decoration: none;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6c567b;
+        }
+
+        .petition-section {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .petition-form, .petition-signatures {
+            width: 45%;
+            margin: 0 2.5%;
+        }
+
+        .petition-signatures ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .invalid {
+            color: red;
+        }
+
+        .call-to-action {
+            width: 45%;
+            font-weight: bold;
+            color: #333;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+            .petition-section {
+                flex-direction: column;
+            }
+            .petition-form, .petition-signatures, .call-to-action {
+                width: 100%;
+                margin: 0;
+            }
+        }
+
+        /* Scroll Fade In/Out */
+        section {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        section.visible {
+            opacity: 1;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal img {
+            animation: scaleUp 1s ease-in-out;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @keyframes scaleUp {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dark Mode Toggle -->
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙</button>
+
+    <!-- Header Section -->
+    <header>
+        <img src="images/logo.png" alt="DanceConnect Logo" style="height: 50px; vertical-align: middle;">
+        <h1 style="display: inline; margin-left: 10px;">DanceConnect</h1>
+        <h3>Your Hub for Dance Tutorials, Events, and Community</h3>
+    </header>    
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#events">Events</a>
+        <a href="#community">Community</a>
+        <a href="#resources">Resources</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- About Section -->
+        <section id="about" class="about">
+            <h2>About DanceConnect</h2>
+            <p>Welcome to DanceConnect, your online platform for all things dance. Whether you're a beginner or a professional, we have something for you. Explore tutorials, connect with instructors, and join a passionate community of dancers from around the world.</p>
+            <p>Discover the latest dance events happening near you or virtually, and participate in discussions about the art of dance.</p>
+        </section>
+
+        <!-- Image Section -->
+        <section id="images" class="images-section">
+            <h2>Impact of Dance</h2>            
+            <img src="images/dance1.jpg" alt="Bollywood Dance Image">
+            <p>Dancers from all around the world showcasing their talents at various cultural events.</p>
+
+            <img src="images/dance2.jpg" alt="Bollywood Dance Image">
+            <p>Workshops hosted by professional instructors to help you learn new moves and techniques.</p>
+        </section>
+
+        <!-- Buttons Section -->
+        <section class="buttons-section">
+            <button class="button">Join Our Newsletter</button>
+            <button class="button">Find Local Events</button>
+        </section>
+
+        <!-- Petition Form Section -->
+        <section class="petition-section">
+            <div class="call-to-action">
+                <p>Join the movement! Sign our petition to bring more dance workshops to your area.</p>
+            </div>
+            <form class="petition-form" id="petitionForm">
+                <h2>Sign the Petition</h2>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                <button type="button" class="button" onclick="validateSignature()">Sign Now</button>
+                <p id="error" class="invalid" style="display:none;">Please enter a valid name and email.</p>
+            </form>
+
+            <div class="petition-signatures">
+                <h2>Signatures</h2>
+                <ul id="signatureList"></ul>
+                <p>Total signatures: <span id="signatureCount">0</span></p>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="resources-section">
+            <h2>Dance Resources</h2>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=2kgTZ2npQQI&ab_channel=TanviKarekar">Dance Tutorials</a> - Learn various dance styles with easy-to-follow videos.</li>
+                <li><a href="https://www.youtube.com/watch?v=UOtfdKKhb2U&ab_channel=ElifKaraman">Cultural Dance Insights</a> - Explore the rich cultural history behind traditional dance forms.</li>
+            </ul>
+        </section>
+
+        <!-- Featured Dance Video -->
+        <section class="video-section">
+            <h2>Featured Dance Video</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/xFISC-TJmIc" frameborder="0" allowfullscreen></iframe>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DanceConnect | Connect with Dancers Worldwide</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">×</span>
+            <h2>Thank you for signing!</h2>
+            <p id="modalMessage"></p>
+            <img id="modalImage" src="images/thankyou.jpg" alt="Thank You" style="width: 100px; height: 100px; animation: scaleUp 1s ease-in-out;">
+        </div>
+    </div>
+
+    <!-- JavaScript for Dark Mode Toggle and Petition Form Validation -->
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            const toggleBtn = document.querySelector('.toggle-btn');
+            toggleBtn.textContent = document.body.classList.contains("dark-mode") ? "🌞" : "🌙";
+        }
+
+        function validateSignature() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const error = document.getElementById('error');
+            const signatureList = document.getElementById('signatureList');
+            const signatureCount = document.getElementById('signatureCount');
+            const modal = document.getElementById('modal');
+            const modalMessage = document.getElementById('modalMessage');
+            
+            // Reset the error
+            error.style.display = "none";
+
+            // Validate name and email
+            if (name && email) {
+                // Add signature to list
+                const li = document.createElement('li');
+                li.textContent = `${name} (${email})`;
+                signatureList.appendChild(li);
+
+                // Update signature count
+                signatureCount.textContent = signatureList.children.length;
+
+                // Show thank you modal
+                modalMessage.textContent = `Thank you for signing, ${name}! Your signature has been added.`;
+                modal.style.display = "block";
+
+                // Auto close the modal after 5 seconds
+                setTimeout(() => {
+                    closeModal();
+                }, 5000);
+            } else {
+                error.style.display = "block";
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = "none";
+        }
+
+        // Fade-in on scroll functionality
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
